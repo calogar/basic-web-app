@@ -52,7 +52,7 @@ gulp.task('babel', function() {
         .pipe(gulp.dest('dist/js'));
 });
 
-gulp.task('minify-js', function() {
+gulp.task('minify-js', ['babel'], function() {
     return gulp.src('dist/js/*.js')
         .pipe(uglify())
         .pipe(header(banner, {
@@ -61,7 +61,7 @@ gulp.task('minify-js', function() {
         .pipe(rename({
             suffix: '.min'
         }))
-        .pipe(gulp.dest('dist/js'))
+        .pipe(gulp.dest('dist/js/min'))
         .pipe(browserSync.reload({
             stream: true
         }));
@@ -114,10 +114,10 @@ gulp.task('browserSync', function() {
 });
 
 // Run all on default
-gulp.task('default', ['sass', 'minify-css', 'babel', 'minify-js', 'slim', 'copy-plugins']);
+gulp.task('default', ['minify-css', 'minify-js', 'slim', 'copy-plugins']);
 
 // Dev task: watch and browserSync
-gulp.task('dev', ['browserSync', 'sass', 'minify-css', 'babel', 'minify-js', 'slim', 'copy-plugins'], function() {
+gulp.task('dev', ['browserSync', 'minify-css', 'minify-js', 'slim', 'copy-plugins'], function() {
     gulp.watch('scss/*.scss', ['sass']);
     gulp.watch('js/*.js', ['babel']);
     gulp.watch('dist/css/*.css', ['minify-css']);
