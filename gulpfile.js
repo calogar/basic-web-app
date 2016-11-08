@@ -108,7 +108,7 @@ gulp.task('copy-plugins', function() {
 gulp.task('browserSync', function() {
     browserSync.init({
         server: {
-            baseDir: 'pages'
+            baseDir: ''
         },
     })
 });
