@@ -1,0 +1,20 @@
+{
+    "name": "basic-web-app",
+    "description": "",
+    "main": "index.js",
+    "authors": [
+        "Carlos Isidoro López"
+    ],
+    "license": "ISC",
+    "homepage": "",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "devDependencies": {
+        "bootstrap": "^3.3.7"
+    }
+}
